@@ -6,7 +6,7 @@ This folder contains the conceptual data model representing the logical relation
 
 ## 1. Conceptual Data Model
 
-**File:** `1_Conceptual_Data_Model.png`
+**File:** `1_Conceptual_DataModel.png`
 
 ### Purpose
 
