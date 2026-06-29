@@ -1,7 +1,15 @@
 {
-  "Environment": <env>,
+  "Environment": "<environment>",
   "GlueJobName": "source-to-rawlayer-job",
-  "ScriptLocation": "s3://<bucket>/glue/source_to_rawlayer.py",
-  "ConnectionName": "oracle-jdbc-connection",
-  "WorkerType": "G.1X"
+  "GlueRoleName": "<glue-iam-role>",
+  "ScriptLocation": "s3://<artifact-bucket>/glue/source_to_rawlayer.py",
+  "SourceSecretName": "<source-secret>",
+  "RedshiftSecretName": "<redshift-secret>",
+  "TargetSchema": "<raw_schema>",
+  "TargetTable": "<source_raw_table>",
+  "WorkerType": "G.1X",
+  "NumberOfWorkers": 2,
+  "GlueVersion": "4.0",
+  "TempDir": "s3://<artifact-bucket>/temporary/",
+  "EnableJobBookmarks": true
 }
