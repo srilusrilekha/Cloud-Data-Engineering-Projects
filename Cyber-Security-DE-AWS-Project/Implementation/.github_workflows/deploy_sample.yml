@@ -1,0 +1,57 @@
+name: Deploy Glue Job
+
+on:
+  push:
+    branches:
+      - feature/*
+    paths:
+      - "cloudformation/**"
+      - "glue/**"
+      - ".github/workflows/deploy-sample.yml"
+
+jobs:
+  deploy-nonprod:
+    name: Deploy AWS Glue Resources
+    runs-on: ubuntu-latest
+
+    environment:
+      name: nonprod
+
+    env:
+      AWS_REGION: <aws-region>
+      STACK_NAME: <cloudformation-stack-name>
+      ARTIFACT_BUCKET: <deployment-artifact-bucket>
+      GLUE_SCRIPT_PATH: glue/python/pythonscript.py
+      CF_TEMPLATE: cloudformation/glue/glue-job-template.yaml
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ${{ env.AWS_REGION }}
+          role-to-assume: ${{ secrets.AWS_DEPLOYMENT_ROLE }}
+
+      - name: Validate CloudFormation Template
+        run: |
+          aws cloudformation validate-template \
+            --template-body file://${{ env.CF_TEMPLATE }}
+
+      - name: Upload Glue Script
+        run: |
+          aws s3 cp \
+            ${{ env.GLUE_SCRIPT_PATH }} \
+            s3://${{ env.ARTIFACT_BUCKET }}/glue/
+
+      - name: Deploy CloudFormation Stack
+        run: |
+          aws cloudformation deploy \
+            --template-file ${{ env.CF_TEMPLATE }} \
+            --stack-name ${{ env.STACK_NAME }} \
+            --capabilities CAPABILITY_NAMED_IAM
+
+      - name: Verify Deployment
+        run: |
+          echo "Deployment completed successfully."
