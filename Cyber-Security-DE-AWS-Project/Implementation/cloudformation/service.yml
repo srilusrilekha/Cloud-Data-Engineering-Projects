@@ -1,0 +1,111 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Sample CloudFormation template to deploy an AWS Glue job for loading source data into Redshift raw layer.
+
+Parameters:
+  Environment:
+    Type: String
+    Description: Deployment environment
+
+  GlueJobName:
+    Type: String
+    Description: Name of the AWS Glue job
+
+  GlueRoleName:
+    Type: String
+    Description: IAM role used by AWS Glue
+
+  ScriptLocation:
+    Type: String
+    Description: S3 path of the Glue Python script
+
+  SourceSecretName:
+    Type: String
+    Description: Secrets Manager secret name for source system credentials
+
+  RedshiftSecretNam:
+    Type: String
+    Description: Secrets Manager secret name for Redshift credentials
+
+  TargetSchema:
+    Type: String
+    Description: Target Redshift schema name
+
+  TargetTable:
+    Type: String
+    Description: Target Redshift raw table name
+
+  ConnectionName:
+    Type: String
+    Description: AWS Glue JDBC connection name
+
+  WorkerType:
+    Type: String
+    Default: G.1X
+    Description: Glue worker type
+
+  NumberOfWorkers:
+    Type: Number
+    Default: 2
+    Description: Number of Glue workers
+
+  GlueVersion:
+    Type: String
+    Default: "4.0"
+    Description: AWS Glue version
+
+  TempDir:
+    Type: String
+    Description: Temporary S3 directory for Glue job execution
+
+  EnableJobBookmarks:
+    Type: String
+    Default: "true"
+    AllowedValues:
+      - "true"
+      - "false"
+    Description: Enable or disable Glue job bookmarks
+
+Resources:
+  SourceToRawLayerGlueJob:
+    Type: AWS::Glue::Job
+    Properties:
+      Name: !Sub "${Environment}-${GlueJobName}"
+      Role: !Ref GlueRoleName
+      GlueVersion: !Ref GlueVersion
+      WorkerType: !Ref WorkerType
+      NumberOfWorkers: !Ref NumberOfWorkers
+      Command:
+        Name: glueetl
+        PythonVersion: "3"
+        ScriptLocation: !Ref ScriptLocation
+      Connections:
+        Connections:
+          - !Ref ConnectionName
+      DefaultArguments:
+        "--job-language": "python"
+        "--enable-metrics": "true"
+        "--enable-continuous-cloudwatch-log": "true"
+        "--enable-spark-ui": "true"
+        "--TempDir": !Ref TempDir
+        "--job-bookmark-option": !If
+          - EnableBookmarks
+          - "job-bookmark-enable"
+          - "job-bookmark-disable"
+        "--source_secret_name": !Ref SourceSecretName
+        "--target_secret_name": !Ref TargetSecretName
+        "--target_schema": !Ref TargetSchema
+        "--target_table": !Ref TargetTable
+        "--environment": !Ref Environment
+      ExecutionProperty:
+        MaxConcurrentRuns: 1
+      MaxRetries: 1
+      Timeout: 60
+      Description: Sample Glue job to extract source data and load into Redshift raw layer.
+
+Conditions:
+  EnableBookmarks: !Equals [!Ref EnableJobBookmarks, "true"]
+
+Outputs:
+  GlueJobName:
+    Description: Created Glue Job Name
+    Value: !Ref SourceToRawLayerGlueJob
