@@ -1,0 +1,7 @@
+{
+  "Environment": <env>,
+  "GlueJobName": "source-to-rawlayer-job",
+  "ScriptLocation": "s3://<bucket>/glue/source_to_rawlayer.py",
+  "ConnectionName": "oracle-jdbc-connection",
+  "WorkerType": "G.1X"
+}
