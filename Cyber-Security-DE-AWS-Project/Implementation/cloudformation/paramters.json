@@ -1,0 +1,15 @@
+{
+  "Environment": "<environment>",
+  "GlueJobName": "source-to-rawlayer-job",
+  "GlueRoleName": "<glue-iam-role>",
+  "ScriptLocation": "s3://<artifact-bucket>/glue/source_to_rawlayer.py",
+  "SourceSecretName": "<source-secret>",
+  "RedshiftSecretName": "<redshift-secret>",
+  "TargetSchema": "<raw_schema>",
+  "TargetTable": "<source_raw_table>",
+  "WorkerType": "G.1X",
+  "NumberOfWorkers": 2,
+  "GlueVersion": "4.0",
+  "TempDir": "s3://<artifact-bucket>/temporary/",
+  "EnableJobBookmarks": true
+}
