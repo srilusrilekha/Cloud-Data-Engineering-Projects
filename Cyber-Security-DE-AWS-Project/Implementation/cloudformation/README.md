@@ -2,7 +2,9 @@
 
 ## Purpose
 
-This folder contains sample Infrastructure as Code (IaC) templates used to provision and manage AWS Glue resources required for the data ingestion pipeline.
+This folder contains sample Infrastructure as Code (IaC) templates demonstrating how AWS resources required for the data engineering pipeline can be provisioned and managed using AWS CloudFormation.
+
+The templates have been simplified and anonymized to illustrate the deployment approach while protecting confidential implementation details.
 
 ---
 
@@ -14,27 +16,30 @@ Defines AWS infrastructure components required for the ETL pipeline.
 
 Typical resources include:
 
-- AWS Glue Jobs
-- Glue Workflows
-- Glue Triggers
-- IAM Roles
-- CloudWatch Integration
-- EventBridge Scheduling
+- AWS Glue Job
+- Secret Manager Secrets
+- IAM Role
+- Job Configuration
+- Runtime Parameters
+- Logging Configuration
 
 ---
 
-### sample.json
+### deployment_parameters.json
 
-Provides deployment parameters consumed during CloudFormation stack deployment.
+Provides environment-specific deployment parameters consumed by the CloudFormation template during deployment.
 
-Typical parameters include:
+Sample Parameters
 
-- Environment
-- Job Name
-- IAM Role
-- Script Location
-- Connection Details
-- Worker Configuration
+Environment
+Glue Job Name
+IAM Role
+Script Location
+Source Secret
+Redshift Secret
+Target Schema
+Target Table
+Worker Configuration
 
 ---
 
@@ -45,7 +50,7 @@ GitHub Actions
         │
         ▼
 Read Parameter File
-(sample.json)
+(deployment_parameters.json)
         │
         ▼
 Deploy Infrastructure
@@ -64,13 +69,22 @@ Ready for Glue Job Execution
 
 - AWS CloudFormation
 - AWS Glue
-- Amazon S3
 - AWS IAM
-- Amazon CloudWatch
-- Amazon EventBridge
+- AWS Secrets Manager
+- Amazon S3
+- Amazon Redshift
+
+---
+
+## Business Value
+Enables Infrastructure as Code (IaC) for consistent deployments.
+Standardizes AWS resource provisioning across environments.
+Supports repeatable and automated deployments through CI/CD.
+Reduces manual configuration effort and deployment errors.
+Simplifies maintenance and future enhancements.
 
 ---
 
 ## Confidentiality Notice
 
-The templates included in this repository have been simplified and anonymized for portfolio purposes. All resource names, account identifiers, connection details, and deployment parameters have been replaced with generic placeholders while preserving the Infrastructure as Code implementation approach.
+The templates included in this repository are representative examples created for portfolio purposes. Resource names, account information, infrastructure details, and deployment parameters have been generalized or replaced with placeholders to protect confidential business information while demonstrating the overall deployment strategy.
