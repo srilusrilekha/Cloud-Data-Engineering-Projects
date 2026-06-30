@@ -33,15 +33,15 @@ Transforms raw datasets into standardized business entities by executing Redshif
              ----> Execute Stored Procedures  ---->   Apply Business Rules   ----->     Populate Integrated Layer   ---->   Logging & Job Completion 
   
                                                 
-# 3. Integrated Layer to Linked Layer
+## 3. Integrated Layer to Linked Layer
 
 File: 03_integrated_to_linked.py
 
-## Purpose
+### Purpose
 
 Generates reporting-ready metric tables by executing stored procedures that populate the Linked Layer for downstream analytics and Power BI dashboards.
 
-## Workflow
+### Workflow
 
             Glue Job Trigger    ---->   Read Runtime Parameters   ---->    Retrieve Credentials   ---->  Connect to Source Database
                                                                           (AWS Secrets Manager)
