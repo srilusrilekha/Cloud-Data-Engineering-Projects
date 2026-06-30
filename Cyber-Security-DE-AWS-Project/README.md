@@ -6,7 +6,7 @@ The platform consolidates fragmented cyber data from multiple enterprise systems
 
 ---
 
-# Executive Summary
+## Project Overview
 
 Enterprise cybersecurity data is often distributed across multiple operational systems such as vulnerability scanners, asset inventory platforms, configuration management databases, threat intelligence feeds, network monitoring tools, Oracle databases, and other enterprise applications. This fragmented landscape makes it difficult to obtain a consistent and trusted view of organizational cyber posture.
 
@@ -16,7 +16,7 @@ The implementation focuses on building scalable, reusable, and maintainable data
 
 ---
 
-# Business Problem
+## Business Problem
 
 Enterprise cybersecurity data resides across numerous operational platforms, resulting in inconsistent reporting and fragmented visibility across the organization.
 
@@ -35,7 +35,7 @@ These challenges made it difficult for business and security stakeholders to mea
 
 ---
 
-# Solution Overview
+## Solution Overview
 
 The solution implements a cloud-native data engineering platform capable of ingesting data from multiple enterprise cybersecurity systems, transforming the data into standardized business entities, and publishing reporting-ready datasets.
 
@@ -50,22 +50,7 @@ The architecture consists of:
 
 ---
 
-# Project Scope
-
-The project covers the complete lifecycle of enterprise cybersecurity data engineering, including:
-
-- Ingestion of cybersecurity data from multiple enterprise source systems
-- Automated ETL pipelines using AWS Glue
-- Data standardization and business rule implementation
-- Layered Amazon Redshift data warehouse
-- Infrastructure provisioning using CloudFormation
-- Automated deployments using GitHub Actions
-- Reporting-ready datasets for Power BI
-- Enterprise monitoring and logging
-
----
-
-# Architecture
+### Architecture
 
 The solution follows a modular cloud architecture consisting of:
 
@@ -83,7 +68,7 @@ Architecture/
 
 ---
 
-# Data Model
+### Data Model
 
 The solution implements a layered enterprise data model consisting of:
 
@@ -101,7 +86,7 @@ Data_Model/
 
 ---
 
-# Implementation
+### Implementation
 
 The implementation follows Infrastructure as Code (IaC) and CI/CD best practices.
 
@@ -122,25 +107,7 @@ Implementation/
 
 ---
 
-# Technology Stack
-
-| Category | Technologies |
-|-----------|--------------|
-| Cloud | AWS |
-| ETL | AWS Glue |
-| Programming | Python, PySpark |
-| Database | Amazon Redshift |
-| Source Systems | Oracle DB, Enterprise APIs, Cybersecurity Platforms |
-| Infrastructure | AWS CloudFormation |
-| CI/CD | GitHub Actions |
-| Storage | Amazon S3 |
-| Reporting | Power BI |
-| Monitoring | Amazon CloudWatch |
-| Security | AWS Secrets Manager |
-
----
-
-# Key Features
+## Key Features
 
 - Automated data ingestion from multiple enterprise systems
 - Parameterized AWS Glue ETL pipelines
@@ -155,7 +122,7 @@ Implementation/
 
 ---
 
-# My Contributions
+## My Contributions
 
 End-to-end ownership of the cloud data engineering solution, including:
 
@@ -177,26 +144,26 @@ End-to-end ownership of the cloud data engineering solution, including:
 
 ---
 
-# Repository Structure
+## Technology Stack
 
-```
-Cyber-Security-DE-AWS-Project
-│
-├── Architecture
-│
-├── Data_Model
-│
-├── Implementation
-│   ├── github-actions
-│   ├── cloudformation
-│   └── glue_jobs
-│
-└── README.md
-```
+| Category | Technologies |
+|-----------|--------------|
+| Cloud | AWS |
+| ETL | AWS Glue |
+| Programming | Python, PySpark |
+| Database | Amazon Redshift |
+| Source Systems | Oracle DB, Enterprise APIs, Cybersecurity Platforms |
+| Infrastructure | AWS CloudFormation |
+| CI/CD | GitHub Actions |
+| Storage | Amazon S3 |
+| Reporting | Power BI |
+| Monitoring | Amazon CloudWatch |
+| Security | AWS Secrets Manager |
 
 ---
 
-# Business Outcomes
+
+## Business Outcomes
 
 The solution delivers:
 
@@ -210,8 +177,33 @@ The solution delivers:
 
 ---
 
+## Repository Structure
 
-# Confidentiality Notice
+```
+Cyber-Security-DE-AWS-Project
+│
+├── Architecture
+│   ├── 1_Logical_Architecture_Overview.png
+│   ├── 2_System_Level_Architecture.png
+│   ├── 3_Job_ Flow_Architecture.png
+│   └── README.md
+│
+├── Data_Model
+│   ├──1_Conceptual_DataModel.png
+│   └── README.md
+│   
+├── Implementation
+│   ├── github-actions
+│   ├── cloudformation
+│   ├──glue_jobs
+│   └── README.md
+│
+└── README.md
+```
+
+---
+
+## Confidentiality Notice
 
 This repository is a portfolio representation of an enterprise cloud data engineering project.
 
