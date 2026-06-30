@@ -4,6 +4,12 @@ A cloud-native data engineering solution built on AWS to ingest, transform, stan
 
 The platform consolidates fragmented cyber data from multiple enterprise systems into a centralized data warehouse using a layered ETL architecture and automated deployment framework, enabling scalable and analytics-ready datasets for Power BI reporting.
 
+## Related Project
+
+This project focuses on the cloud data engineering implementation.
+
+The curated datasets produced by this platform are consumed by the companion **Cyber Security Power BI Analytics** project, which demonstrates semantic modeling, DAX development, and executive dashboards built on top of this data platform.
+
 ---
 
 ## Project Overview
