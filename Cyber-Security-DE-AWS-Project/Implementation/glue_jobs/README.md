@@ -6,22 +6,22 @@ The scripts have been simplified and anonymized for portfolio purposes while pre
 
 ---
 
-# 1. Source to Raw Layer
+## 1. Source to Raw Layer
 
 File: 01_source_to_raw.py
 
-## Purpose
+### Purpose
 
 Extracts data from enterprise source systems, performs basic validation and standardization, and loads the data into the Amazon Redshift Raw Layer.
 
-## Workflow
+### Workflow
 
-            Glue Job Trigger    ---->   Read Runtime Parameters   ---->    Retrieve Credentials   ---->  Connect to Source Database  ----> Extract Source Data  
-                                                                          (AWS Secrets Manager)
+            Glue Job Trigger    ---->   Read Runtime Parameters   ---->    Retrieve Credentials (AWS Secrets Manager)  ---->  Connect to Source Database  ----> Extract Source Data   ---->   Basic Validation &     ----->     Load Data into     ---->   Logging & Job Completion 
+                              Column Standardization            Redshift Raw Layer 
+                                                                                                                
+                                                                          
 
-            ---->   Basic Validation &     ----->     Load Data into       ---->   Logging & Job Completion 
-                  Column Standardization            Redshift Raw Layer 
-                                                                                                                                                                
+                                                            
 # 2. Raw Layer to Integrated Layer
 
 File: 02_raw_to_integrated.py
