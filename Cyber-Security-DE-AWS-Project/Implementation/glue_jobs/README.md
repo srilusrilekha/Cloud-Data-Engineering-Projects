@@ -16,14 +16,12 @@ Extracts data from enterprise source systems, performs basic validation and stan
 
 ## Workflow
 
-            Glue Job Trigger    ---->   Read Runtime Parameters   ---->    Retrieve Credentials   ---->  Connect to Source Database
+            Glue Job Trigger    ---->   Read Runtime Parameters   ---->    Retrieve Credentials   ---->  Connect to Source Database  ----> Extract Source Data  
                                                                           (AWS Secrets Manager)
-                                                                                                                   │
-                                                                                                                   ▼
-                                                                                                                                                                            Logging & Job Completion    <----    Load Data into    <----    Basic Validation &     <----    Extract Source Data
-                                                Redshift Raw Layer        Column Standardization
 
-
+            ---->   Basic Validation &     ----->     Load Data into       ---->   Logging & Job Completion 
+                  Column Standardization            Redshift Raw Layer 
+                                                                                                                                                                
 # 2. Raw Layer to Integrated Layer
 
 File: 02_raw_to_integrated.py
