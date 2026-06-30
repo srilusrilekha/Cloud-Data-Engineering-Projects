@@ -16,23 +16,6 @@ The implementation focuses on building scalable, reusable, and maintainable data
 
 ---
 
-# Project Highlights
-
-| Category | Details |
-|-----------|----------|
-| Cloud Platform | AWS |
-| Data Processing | AWS Glue |
-| Data Warehouse | Amazon Redshift |
-| Programming | Python, SQL, PySpark |
-| Infrastructure as Code | AWS CloudFormation |
-| CI/CD | GitHub Actions |
-| Reporting | Power BI |
-| Data Architecture | Raw → Integrated → Linked |
-| Source Systems | Multiple Enterprise Cybersecurity Platforms |
-| Deployment | Automated |
-
----
-
 # Business Problem
 
 Enterprise cybersecurity data resides across numerous operational platforms, resulting in inconsistent reporting and fragmented visibility across the organization.
