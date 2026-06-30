@@ -16,12 +16,9 @@ Extracts data from enterprise source systems, performs basic validation and stan
 
 ### Workflow
 
-            Glue Job Trigger    ---->   Read Runtime Parameters   ---->    Retrieve Credentials (AWS Secrets Manager)  ---->  Connect to Source Database  ----> Extract Source Data   ---->   Basic Validation &     ----->     Load Data into     ---->   Logging & Job Completion 
-                              Column Standardization            Redshift Raw Layer 
-                                                                                                                
-                                                                          
+            Glue Job Trigger   ---->   Read Runtime Parameters   ---->    Retrieve Credentials (AWS Secrets Manager)  ---->  Connect to Source Database  ----> Extract Source Data   ---->   Basic Validation & Column Standardization  ----->     Load Data into Redshift Raw Layer   ---->   Logging & Job Completion 
 
-                                                            
+                                         
 # 2. Raw Layer to Integrated Layer
 
 File: 02_raw_to_integrated.py
@@ -32,11 +29,8 @@ Transforms raw datasets into standardized business entities by executing Redshif
 
 ## Workflow
 
-             Glue Job Trigger    ---->   Read Runtime Parameters   ---->    Retrieve Credentials   ---->  Connect to Redshift Database
-                                                                          (AWS Secrets Manager)
-                                                                                                                   │
-                                                                                                                   ▼
-                                                                                                                                                                            Logging & Job Completion    <----    Populate Integrated Layer   <----    Apply Business Rules     <----    Execute Stored Procedures
+             Glue Job Trigger    ---->   Read Runtime Parameters   ---->    Retrieve Credentials (AWS Secrets Manager)  ---->  Connect to Redshift Database  ----> Execute Stored Procedures  ---->   Apply Business Rules   ----->     Populate Integrated Layer   ---->   Logging & Job Completion 
+  
                                                 
 # 3. Integrated Layer to Linked Layer
 
