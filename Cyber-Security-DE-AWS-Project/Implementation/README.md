@@ -40,7 +40,7 @@ Power BI Dashboards
 
 | Folder | Description |
 |---------|-------------|
-| **.github_workflows** | Sample GitHub Actions workflows demonstrating automated deployment of AWS resources. |
+| **github_workflows** | Sample GitHub Actions workflows demonstrating automated deployment of AWS resources. |
 | **cloudformation** | Sample Infrastructure as Code (IaC) templates used to provision AWS Glue resources and deployment configurations. |
 | **glue_jobs** | Sample AWS Glue ETL jobs demonstrating Source → Raw, Raw → Integrated, and Integrated → Linked processing. |
 
