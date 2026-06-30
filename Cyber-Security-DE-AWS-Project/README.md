@@ -22,7 +22,7 @@ Enterprise cybersecurity data resides across numerous operational platforms, res
 
 Common challenges include:
 
-| Challenge | Business Impact |
+|Challenge |Business Impact |
 |------------|-----------------|
 | Fragmented cybersecurity data across multiple platforms | No centralized source of truth |
 | Manual data collection and reporting | Delayed business decisions |
