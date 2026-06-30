@@ -49,8 +49,9 @@ Generates reporting-ready metric tables by executing stored procedures that popu
                                                                                                                       ▼
                                                                                                                                                                             Power BI Ready   <----    Populate Linked Layer   <----  Generate Business Metrics  <----  Execute Metric Stored Procedures
                                                                                                                                                             
-                                                                                                                                                       
-# Technologies Used
+---
+
+## Technologies Used
 - AWS Glue
 - PySpark
 - Python
@@ -58,7 +59,9 @@ Generates reporting-ready metric tables by executing stored procedures that popu
 - Amazon Redshift
 - SQL Stored Procedures
 
-# Confidentiality Notice
+---
+
+## Confidentiality Notice
 
 The scripts included in this repository are representative examples created for portfolio purposes. Business logic, table names, stored procedures, credentials, and implementation-specific details have been generalized or replaced with placeholders to protect confidential business information while demonstrating the overall ETL design and implementation approach.  
                                                                                                                                                 
