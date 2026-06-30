@@ -8,7 +8,7 @@ The scripts have been simplified and anonymized for portfolio purposes while pre
 
 ## 1. Source to Raw Layer
 
-File: 01_source_to_raw.py
+**File:** `01_source_to_raw.py`
 
 ### Purpose
 
@@ -16,40 +16,64 @@ Extracts data from enterprise source systems, performs basic validation and stan
 
 ### Workflow
 
-            Glue Job Trigger   ---->   Read Runtime Parameters   ---->    Retrieve Credentials (AWS Secrets Manager)  ---->  Connect to Source Database  ----> Extract Source Data   ---->   Basic Validation & Column Standardization  ----->     Load Data into Redshift Raw Layer   ---->   Logging & Job Completion 
+| Step | Activity |
+|------|----------|
+| 1 | 🚀 Glue Job Trigger |
+| 2 | ⚙️ Read Runtime Parameters |
+| 3 | 🔐 Retrieve Credentials (AWS Secrets Manager) |
+| 4 | 🗄️ Connect to Source Database |
+| 5 | 📥 Extract Source Data |
+| 6 | ✔️ Validate & Standardize Data |
+| 7 | 📤 Load into Redshift Raw Layer |
+| 8 | 📊 Logging & Job Completion |
 
+---
                                          
 ## 2. Raw Layer to Integrated Layer
 
-File: 02_raw_to_integrated.py
+**File:** `02_raw_to_integrated.py`
 
 ### Purpose
 
-Transforms raw datasets into standardized business entities by executing Redshift stored procedures that apply business rules and data relationships.
+Transforms raw datasets into standardized business entities by executing Amazon Redshift stored procedures.
 
 ### Workflow
 
-             Glue Job Trigger    ---->   Read Runtime Parameters   ---->    Retrieve Credentials (AWS Secrets Manager)  ---->  Connect to Redshift Database  
-             ----> Execute Stored Procedures  ---->   Apply Business Rules   ----->     Populate Integrated Layer   ---->   Logging & Job Completion 
-  
-                                                
+| Step | Activity |
+|------|----------|
+| 1 | 🚀 Glue Job Trigger |
+| 2 | ⚙️ Read Runtime Parameters |
+| 3 | 🔐 Retrieve Credentials (AWS Secrets Manager) |
+| 4 | 🗄️ Connect to Amazon Redshift |
+| 5 | ⚡ Execute Stored Procedures |
+| 6 | 🔄 Apply Business Rules & Transformations |
+| 7 | 📦 Populate Integrated Layer |
+| 8 | 📊 Logging & Job Completion |
+
+---                                                
+
 ## 3. Integrated Layer to Linked Layer
 
-File: 03_integrated_to_linked.py
+**File:** `03_integrated_to_linked.py`
 
 ### Purpose
 
-Generates reporting-ready metric tables by executing stored procedures that populate the Linked Layer for downstream analytics and Power BI dashboards.
+Generates reporting-ready metric tables by executing stored procedures that populate the Linked Layer for Power BI dashboards.
 
 ### Workflow
 
-            Glue Job Trigger    ---->   Read Runtime Parameters   ---->    Retrieve Credentials   ---->  Connect to Source Database
-                                                                          (AWS Secrets Manager)
-                                                                                                                      │
-                                                                                                                      ▼
-                                                                                                                                                                            Power BI Ready   <----    Populate Linked Layer   <----  Generate Business Metrics  <----  Execute Metric Stored Procedures
-                                                                                                                                                            
----
+| Step | Activity |
+|------|----------|
+| 1 | 🚀 Glue Job Trigger |
+| 2 | ⚙️ Read Runtime Parameters |
+| 3 | 🔐 Retrieve Credentials (AWS Secrets Manager) |
+| 4 | 🗄️ Connect to Amazon Redshift |
+| 5 | 📈 Execute Metric Stored Procedures |
+| 6 | 📊 Generate KPI & Business Metrics |
+| 7 | 📦 Populate Linked Layer |
+| 8 | ✅ Power BI Ready |
+
+---                                                                                                                                                         
 
 ## Technologies Used
 - AWS Glue
