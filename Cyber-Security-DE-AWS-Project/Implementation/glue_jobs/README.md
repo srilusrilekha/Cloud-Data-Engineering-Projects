@@ -19,17 +19,18 @@ Extracts data from enterprise source systems, performs basic validation and stan
             Glue Job Trigger   ---->   Read Runtime Parameters   ---->    Retrieve Credentials (AWS Secrets Manager)  ---->  Connect to Source Database  ----> Extract Source Data   ---->   Basic Validation & Column Standardization  ----->     Load Data into Redshift Raw Layer   ---->   Logging & Job Completion 
 
                                          
-# 2. Raw Layer to Integrated Layer
+## 2. Raw Layer to Integrated Layer
 
 File: 02_raw_to_integrated.py
 
-## Purpose
+### Purpose
 
 Transforms raw datasets into standardized business entities by executing Redshift stored procedures that apply business rules and data relationships.
 
-## Workflow
+### Workflow
 
-             Glue Job Trigger    ---->   Read Runtime Parameters   ---->    Retrieve Credentials (AWS Secrets Manager)  ---->  Connect to Redshift Database  ----> Execute Stored Procedures  ---->   Apply Business Rules   ----->     Populate Integrated Layer   ---->   Logging & Job Completion 
+             Glue Job Trigger    ---->   Read Runtime Parameters   ---->    Retrieve Credentials (AWS Secrets Manager)  ---->  Connect to Redshift Database  
+             ----> Execute Stored Procedures  ---->   Apply Business Rules   ----->     Populate Integrated Layer   ---->   Logging & Job Completion 
   
                                                 
 # 3. Integrated Layer to Linked Layer
